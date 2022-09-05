@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+<style>
+    body {
+    padding-top: 80px;
+  }
+</style>
+Имя пользователя: <b>{{user}}</b><br>
+ID пользователя в Telegram: <b>{{user.user_id_tg}}</b><br>
+Всего предупреждений: <b>{{user.warn}}</b>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+bot/venv/
+web/venv/
+.vscode
+__pycache__
+ffmpeg.exe
+../.idea
