@@ -22,7 +22,7 @@ class IndexView(View):
 
     @staticmethod
     def get(request):
-        context = {'hello': settings.HOST}
+        context = {'hello': settings.TOKEN}
         template = 'index.html'
         return render(request, template, context)
 

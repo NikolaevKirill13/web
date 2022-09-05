@@ -5,6 +5,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils.exceptions import ValidationError
 from config.config import TOKEN
 
+
 MODE = sys.argv[1]
 
 if MODE == 'prod':
@@ -15,7 +16,7 @@ else:
     logging.warn("Type MODE in command line!\n Example:'python main.py dev' or 'python main.py prod'")
     sys.exit(1)
 try:
-    bot = Bot(token = TOKEN, parse_mode="HTML")
+    bot = Bot(token=TOKEN, parse_mode="HTML")
     dispatcher = Dispatcher(bot, storage=MemoryStorage())
 except (ValidationError):
     logging.warn("Configure TOKEN in config.py!")
