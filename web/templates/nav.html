@@ -13,6 +13,6 @@
 <a class="navbar-brand">{% if user.is_authenticated %}{{ user }}</a>
 <a type="button" class="btn btn-secondary" href="{% url 'logout'%}">Выход</a>
 {% else %}
-<a type="button" class="btn btn-secondary" href="/login">Вход</a>
+<a type="button" class="btn btn-secondary" href="{% url 'login' %}">Вход</a>
 {% endif %}
   </nav>

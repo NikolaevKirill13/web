@@ -1,4 +1,3 @@
-import os
 from django.conf import settings
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,7 +8,7 @@ from django.views.generic import DetailView, View
 from .backend import TgAuthUserBackend
 from .models import User
 from .forms import ChangePasswordForm
-from .widget_generator import tg_login_widget
+#from web.core.context_processors.widget_generator import tg_login_widget
 
 
 bot_name = settings.TELEGRAM_BOT_NAME
@@ -22,15 +21,14 @@ class IndexView(View):
 
     @staticmethod
     def get(request):
-        context = {'hello': settings.TOKEN}
+        context = {'hello': 'Привет=Р'}
         template = 'index.html'
         return render(request, template, context)
 
 
 def login(request):
     """ Страница для размещения всх вариантов входа в систему"""
-    tg_login = tg_login_widget(request)
-    return render(request, 'registration/login.html', context={'widget': tg_login})
+    return render(request, 'registration/login.html', context={})
 
 
 class UserDetail(LoginRequiredMixin, DetailView):

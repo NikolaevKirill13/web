@@ -4,8 +4,6 @@ services:
   db:
     image: postgres:12.0-alpine
     container_name: db_postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=test
       - POSTGRES_USER=test
@@ -13,20 +11,28 @@ services:
     ports:
       - "5432:5432"
   web:
-    build: web
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    image: python:3.9.6-alpine
     container_name: django
+    build:
+      dockerfile: Dockerfile.web
+      context: .
+    working_dir: "/usr/src/web"
     volumes:
       - ./web/:/usr/src/web/
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
     env_file:
-      - web/.env
+      - .env.dev
     depends_on:
       - db
   bot:
-    build: bot
+    image: python:3.10-buster
     container_name: bot
+    build:
+      dockerfile: Dockerfile.bot
+      context: .
+    working_dir: "/usr/src/bot"
     volumes:
       - ./bot/:/usr/src/bot/
     command: python main.py

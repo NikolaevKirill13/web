@@ -20,4 +20,4 @@ def tg_login_widget(request):
         + data_auth_url \
         + data_request_access \
         + WIDGET_SCRIPT_END
-    return widget
+    return {'widget': widget}

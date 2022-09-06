@@ -23,12 +23,12 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-^ne#gs=cjv-ku+%2-%-1vvon)u4zx)zio#4s6o78@2se6i=-vy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'e492-94-25-228-6.eu.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1', 'f240-94-25-228-6.eu.ngrok.io']
 # Application definition
 
 DJANGO_APPS = [
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.widget_generator.tg_login_widget',
             ],
         },
     },
@@ -169,5 +170,3 @@ TELEGRAM_BOT_NAME = os.getenv('TELEGRAM_BOT_NAME')
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 
 TELEGRAM_LOGIN_REDIRECT_URL = os.getenv('TELEGRAM_LOGIN_REDIRECT_URL')
-
-TOKEN = os.getenv('TOKEN')
