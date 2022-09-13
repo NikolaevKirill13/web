@@ -10,7 +10,7 @@ async def download_voice(file: types.File , file_name: str, path: str) ->bool:
     await bot.download_file(file_path=file.file_path, destination=f"{path}{file_name}")
 
 
-async def transcibeVoice(voice, path):
+async def transcibe_voice(voice, path):
     await download_voice(file=voice, file_name=f"{voice.file_id}.ogg", path=path)
     os.system(f"ffmpeg -i {path}{voice.file_id}.ogg {path}{voice.file_id}.wav")
 
@@ -18,7 +18,7 @@ async def transcibeVoice(voice, path):
 #recognize wav file to text
 async def recognize_voice(voice, language="ru-RU") -> str:
     path = "bot/download/voices/"
-    await transcibeVoice(voice, path)
+    await transcibe_voice(voice, path)
     try:
         r = sr.Recognizer()
         with sr.WavFile(f"{path}{voice.file_id}.wav") as source:

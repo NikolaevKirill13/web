@@ -4,6 +4,8 @@ from config import config
 #WEB_URL = "http://127.0.0.1:8000/" text url
 
 
+#Надо переписать модуль полностью, сделать функции рабочими(пока только прототипы), сделать функции с post запросами
+
 def get_warn(user_id) -> dict:
     url = config.WEB_URL + f"api/block/{user_id}?format=json"
     warn = requests.get(url=url)
@@ -28,3 +30,8 @@ def push_user(user) -> bool:
     params = {"user_id":f"{user.id}", "first_name":f"{user.first_name}", "full_name":f"{user.full_name}", "username":f"{user.mention}",}
     response = requests.post(url=url, params=params)
     return True if response.code == 200 else False
+
+
+#Функция отправки благодарности на сервер django для записи в БД
+def send_pet(user_id):
+    pass

@@ -31,12 +31,6 @@ def apiOverview(request):
     return Response(api_urls)
 
 
-#class FaqList(generics.ListCreateAPIView):
-#    permission_classes = (IsAuthenticated,)
-#    queryset = Faq.objects.all()
-#    serializer_class = serializers.FaqSerializer
-
-
 class FaqDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Faq.objects.all()
     serializer_class = serializers.FaqSerializer
@@ -44,7 +38,7 @@ class FaqDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class FaqList(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         queryset = Faq.objects.all()
@@ -135,7 +129,7 @@ def authenticate_bot(request):
             try:
                 payload = jwt_payload_handler(user)
                 token = jwt.encode(payload, settings.SECRET_KEY)
-                user_details = {'username': user.username, 'token': token}
+                user_details = {'token': token}
                 #user_logged_in.send(sender=user.__class__,
                 #                    request=request, user=user)
                 return Response(user_details, status=status.HTTP_200_OK)

@@ -1,2 +1,2 @@
 TOKEN = "5207576394:AAHMZXTXbDEXt4ytIULqQ1mI8VUnCtN_Aw4"
-WEB_URL="https://c263-94-25-229-253.eu.ngrok.io/"
+WEB_URL="http://127.0.0.1:8000/"
