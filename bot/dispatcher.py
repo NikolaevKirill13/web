@@ -5,7 +5,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils.exceptions import ValidationError
 from config.config import TOKEN
 
-MODE = sys.argv[1]
+MODE = "dev"#sys.argv[1]
 
 if MODE == 'prod':
     logging.basicConfig(level=logging.INFO)

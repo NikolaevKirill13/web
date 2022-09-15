@@ -40,3 +40,22 @@ async def mute_callback_button(callback_query: types.CallbackQuery):
             can_send_animations = True))
     await callback_query.answer(text="Ты прошел проверку",show_alert=True)
     await callback_query.message.delete()
+
+
+#example of poll mute
+# @dispatcher.message_handler(commands=["mute"], commands_prefix="/")
+# async def test(message: types.Message):
+#     await message.bot.send_poll(message.chat.id, question=f"Выдать мут пользователю id: {message.reply_to_message.from_user.id}?",
+#     options=["ЗА","Против"], open_period=600, reply_to_message_id=message.reply_to_message.message_id)
+
+
+# @dispatcher.poll_handler()
+# async def handler_poll(poll: types.Poll):
+#     if poll.options[0]["voter_count"] == 10:
+#         user_id = re("\d", poll.question)
+    
+#         # await bot.restrict_chat_member(chat_id = callback_query.message.chat.id, user_id=callback_query.message.reply_to_message["from"].id, 
+#         #     permissions=types.ChatPermissions( can_send_messages = True, can_send_games = True, 
+#         #     can_send_polls = True, can_use_inline_bots = True, can_send_media_messages = True, 
+#         #     can_invite_users = True, can_add_web_page_previews = True, can_send_stickers = True, 
+#         #     can_send_animations = True))
